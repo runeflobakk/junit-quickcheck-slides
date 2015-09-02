@@ -1,3 +1,15 @@
+class: center, inverse
+count: false
+
+# Spesifisering av egenskaper med
+
+# .large[junit-.red[quickcheck]]
+
+---
+
+
+
+
 
 class: center, inverse
 
@@ -101,22 +113,27 @@ Implementere metode som reverserer en String.
 - hvilke tester?
 
 --
+count: false
 
 - `reverse("abc") == "cba"`
 
 --
+count: false
 
 - `reverse("xx") == "xx"`
 
 --
+count: false
 
 - `reverse("x") = "x"`
 
 --
+count: false
 
 - `reverse("") == ""`
 
 --
+count: false
 
 - mer?
 
@@ -180,12 +197,13 @@ class: center
 Annen måte å beskrive reversering av strenger:
 
 --
+count: false
 
 Reversering av
 .red[sammensetningen av to vilkårlige stringer]
 
 --
-
+count: false
 
 ```java
 reverse("abc" + "def")
@@ -193,11 +211,13 @@ reverse("abc" + "def")
 
 
 --
+count: false
 
 er det samme som .red[reversering av hver streng] for seg,<br/>
 satt sammen i .red[motsatt rekkefølge].
 
 --
+count: false
 
 ```java
 reverse("def") + reverse("abc")
@@ -313,6 +333,10 @@ alle andre HTTP respons-koder enn 200 skal resultere i "UNDECIDED"
 - .red[Sikkerhet] &ndash; _allow/deny all except..._
 - .red[Redusering] &ndash; sett av verdier som skal gi ett bestemt resultat
 - "matematiske" definisjoner
+
+???
+
+På hvilke områder er junit-quickcheck relevant?
 
 ---
 
