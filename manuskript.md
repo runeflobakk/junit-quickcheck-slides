@@ -7,7 +7,7 @@ Er det mange her som liker enhetstesting og testdrevet utvikling? (hold opp hend
 
 Jeg heter Rune, og jeg jobber som utvikler i BEKK, og jeg digger enhetstester.
  - de er raske
- - du kan detaljsjekke masse at koden gjør som den skal, og det gir meg trygghet.
+ - jeg kan gjøre masse detaljsjekking at koden gjør som den skal, og det gir meg trygghet.
  - i tillegg hjelper de meg å lage god løskoblet kode.
 
 ----------------------------------
@@ -100,7 +100,9 @@ samt at vi instruerer JUnit til å benytte `Theories`-runner'en til å kjøre te
 
 Vi skal se på et litt mer relevant eksempel.
 
-Online Certificate Status Protocol er en tjeneste man kan forespørre om i utgangspunktet gyldige sertifikater har blitt revokert, altså av ulike årsaker blitt ansett som ugyldige. OCSP er en vanlig del av valideringsprosessen av sertifikater. En OCSP-tjeneste er et vanlig HTTP-endepunkt man sender en request til og får en respons tilbake.
+Hvor mange her har hørt om OCSP?
+
+Online Certificate Status Protocol er en tjeneste man kan forespørre om i utgangspunktet gyldige sertifikater har blitt revokert, altså av ulike årsaker blitt ansett som ugyldige. F.eks. hvis sertifikatet har kommet på avveie, eller andre årsaker. OCSP er en vanlig del av valideringsprosessen av sertifikater. En OCSP-tjeneste er et vanlig HTTP-endepunkt man sender en request til og får en respons tilbake som angir om sertifikatet er revokert eller ikke.
 
 -------------
 
@@ -116,7 +118,8 @@ public void ocspLookupIsUndecidedForAnythingButStatusCode200(
 }
 ```
 
-Her skal vi teste at vi anser alle andre HTTP respons-koder enn 200 som "UNDECIDED", og vi trenger ikke å velge en eller flere vilkårlige koder som eksempler på dette.
+
+Her skal vi teste at vi anser alle andre HTTP respons-koder enn 200 fra OCSP-tjenesten som "UNDECIDED", og vi trenger ikke å velge en eller flere vilkårlige responskoder som eksempler på dette.
 
 Vi spesifiserer at "for alle tall mellom 100 og 599, og vi antar at det ikke er 200, gitt at statuskoden i OCSP-responsen er dette tallet, vil valideringen av sertifikatet resultere i "UNDECIDED".
 
@@ -124,7 +127,7 @@ Vi spesifiserer at "for alle tall mellom 100 og 599, og vi antar at det ikke er 
 
 ------------------------------------------
 
-## Oppsummering
+# Oppsummering
 
 junit-quickcheck kan være relevant for testing av
 - Forretningsregler
