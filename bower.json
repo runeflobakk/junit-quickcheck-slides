@@ -1,0 +1,16 @@
+{
+  "name": "javazone-2015-junit-quickcheck",
+  "version": "1",
+  "authors": [
+    "Rune Flobakk <flobakk@gmail.com>"
+  ],
+  "description": "Spesifisering av egenskaper med junit-quickcheck",
+  "license": "(CC-BY-4.0 OR Apache-2.0)",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "remark": "~0.11.0",
+    "marked": "~0.3.5",
+    "requirejs": "~2.1.20"
+  }
+}

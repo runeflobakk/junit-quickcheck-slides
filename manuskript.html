@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Spesifisering av egenskaper med junit-quickcheck</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/marked/marked.min.js"></script>
+  </head>
+
+  <body>
+    <div id="manuskript" style="width: 800px">
+    </div>
+
+    <script type="text/javascript">
+      $.get('manuskript.md', function(markdown) {
+        $('#manuskript').html(marked(markdown));
+      });
+    </script>
+  </body>
+</html>
