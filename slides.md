@@ -125,7 +125,7 @@ count: false
 --
 count: false
 
-- `reverse("x") = "x"`
+- `reverse("x") == "x"`
 
 --
 count: false
