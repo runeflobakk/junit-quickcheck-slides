@@ -1,29 +1,31 @@
+> _husk klikk "neste" for å starte presentasjon!_
+
 Hei!
 
-Er det mange her som liker enhetstesting og testdrevet utvikling? (hold opp hender).
+Er det mange her som **liker enhetstesting og testdrevet utvikling**? (hold opp hender).
 
 --------------------------------
 
 
-Jeg heter Rune, og jeg jobber som utvikler i BEKK, og jeg digger enhetstester.
- - de er raske
- - jeg kan gjøre masse detaljsjekking at koden gjør som den skal, og det gir meg trygghet.
- - i tillegg hjelper de meg å lage god løskoblet kode.
+Jeg heter Rune, og jeg jobber som **utvikler** i BEKK, og jeg _digger_ enhetstester.
+ - de er **raske**
+ - jeg kan gjøre masse **detaljsjekking** at koden gjør som den skal, og det gir meg trygghet.
+ - i tillegg hjelper de meg å lage **god løskoblet kode**.
 
 ----------------------------------
 
 
-Jeg mener at TDD ikke har dødd, men det har kanskje mista litt av "edgen" sin. Det er definitivt ikke hipt
-og kult lenger, og det er kanskje lett å slå seg til ro med å skrive noen asserts og call it a day.
-Jeg mener at, akkurat som med programmering generelt, bør vi anstrenge oss for å stadig bli bedre til å skrive gode enhetstester.
+Jeg mener at **TDD ikke har dødd**, men det har kanskje mista litt av "edgen" sin. Det er definitivt _ikke hipt
+og kult_ lenger, og det er **kanskje lett å slå seg litt til ro med å skrive noen asserts som man alltid gjør, og call it a day**.
+Jeg mener at, akkurat som med programmering generelt, bør vi _anstrenge_ oss for å **stadig bli bedre til å skrive gode enhetstester**.
 
-Det finnes masse verktøy for å skrive enhetstester, og jeg skal vise dere enda et som dere kan legge til
-i test-verktøykassa deres.
+Det finnes masse verktøy for å skrive enhetstester, og jeg skal **vise dere enda et** som dere kan legge til
+i **test-verktøykassa** deres.
 
 -----------------------------------
 
 
-junit-quickcheck er en utvidelse til JUnit, og tilbyr en litt annen måte å tenke på test-input og forventede resultater. Man beskriver generelle egenskaper i stedet for å bruke konkrete eksempler som input og forventde resultater. junit-quickcheck er inspirert av tilsvarende verktøy for f.eks. Haskell og Scala.
+**junit-quickcheck** er en utvidelse til JUnit, og tilbyr en litt **annen måte å tenke på test-input og forventede resultater**. Med junit-quickcheck beskriver man mer **generelle egenskaper** i stedet for å bruke konkrete eksempler som input og forventde resultater. junit-quickcheck er **inspirert av tilsvarende verktøy** for f.eks. Haskell og Scala.
 
 
 
@@ -31,16 +33,16 @@ junit-quickcheck er en utvidelse til JUnit, og tilbyr en litt annen måte å ten
 ------------------------------------
 
 
-De fleste er godt kjent med å skrive enhetstester som et sett med eksempler som skal gi et fast resultat.
-God praksis er å inkludere corner-cases, og jo flere eksempler man lager, desto tryggere kan man føle seg
+De fleste er godt kjent med å skrive **enhetstester som et sett med statiske eksempler som skal gi et fast resultat**.
+God praksis er å inkludere **corner-cases**, og jo flere eksempler man lager, desto tryggere kan man føle seg
 at koden takler alt man kaster på den.
 
 
 -------------------------------------
 
 
-Hvis du skulle implementere en metode som reverserer en String (for å ta et eksempel som alle kan kjenne
-seg igjen i :wink: ), hvilke tester ville du skrive for å bevise at metoden gjør det den skal for alle Strings?
+Dersom du skulle implementere en **metode som reverserer en String** (_for å ta et eksempel som alle kan kjenne
+seg igjen i :wink:_), hvilke tester ville du skrive for å bevise at metoden gjør det den skal **for alle Strings**?
 
 
 - sjekke at `reverse("abc") == "cba"`
@@ -49,31 +51,31 @@ seg igjen i :wink: ), hvilke tester ville du skrive for å bevise at metoden gj�
 - sjekke at `reverse("") == ""`
 - mer?
 
-Testene beskrevet over gir _60% testdekning_ av Java sin egen implementasjon i `StringBuilder.reverse()`.
+Testene beskrevet over gir _60% testdekning_ av Java sin egen implementasjon av reverse, som ligger i `StringBuilder.reverse()`.
 
 -------------------------------------
 
-Den ser slik ut. Jeg vet ikke en gang hva alt her gjør for noe en gang. Hvordan skal vi greie å teste at all denne koden faktisk gjør som den skal?
+Den ser slik ut. Jeg vet ikke hva alt her gjør for noe en gang. **Hvordan skal vi greie å teste** at all denne koden faktisk gjør som den skal?
 
 -------------------------------------
 
-En annen måte å beskrive reversering av Strings er slik:
+En _annen måte å beskrive reversering_ av Strings er slik:
 
-> Reversering av sammensetningen av to vilkårlige stringer,
+> **Reversering av sammensetningen av to vilkårlige stringer,**
 
-f.eks. reverse("abc" + "def")
+f.eks. `reverse("abc" + "def")`
 
-> er det samme som reversering av hver streng, satt sammen
-> i motsatt rekkefølge.
+> **er det samme som reversering av hver streng, satt sammen
+> i motsatt rekkefølge.**
 
-Altså reverse("def") + reverse("abc")
+Altså `reverse("def") + reverse("abc")`
 
 -------------------------------------------
 Dette stemmer for alle strenger.
 
 -------------------------------------------
 
-Og denne definisjonen kan fungere som en test skrevet v.h.a. junit-quickcheck:
+Og denne definisjonen kan fungere _som en test skrevet v.h.a. junit-quickcheck_:
 
 ```java
 @Theory
@@ -84,13 +86,15 @@ public void reversering(@ForAll String s1, @ForAll String s2) {
 }
 ```
 
-Denne testen gir 100% testdekning av Java sin implementasjon av `StringBuilder.reverse()`. Her sier vi at denne testen er gyldig for hva som helst av Stringen **s1** og hva som helst av Stringen **s2**, og junit-quickcheck vil kalle testmetoden gjentatte ganger med tilfeldige Strings av ulik lengde for å sjekke om det vi påstår virkelig er sant.
+Denne testen gir **100% testdekning** av Java sin implementasjon av `StringBuilder.reverse()`.
 
-I tillegg er testmetoden markert som en `@Theory`
+Her sier vi at denne testen er gyldig for _hva som helst av Stringene **s1** og **s2**_, og junit-quickcheck vil **kalle testmetoden gjentatte ganger med tilfeldige Strings av ulik lengde**, også tomme strenger, for å sjekke om det vi påstår virkelig er sant.
+
+I tillegg er testmetoden markert som en `@Theory` i stedet for den vanlig `@Test`-annotasjonen
 
 ---------------
 
-samt at vi instruerer JUnit til å benytte `Theories`-runner'en til å kjøre testene i stedet for den vanlige runneren. Du kan likevel ha tradisjonelle tester markert med `@Test` i samme testklasse dersom du vil teste spesifikke cases.
+samt at vi instruerer JUnit til å benytte `Theories`-runner'en til å kjøre testene i stedet for den vanlige runneren. Du kan likevel ha tradisjonelle tester annotert med `@Test` i samme testklasse dersom du vil teste spesifikke cases.
 
 
 ------------------
@@ -98,11 +102,11 @@ samt at vi instruerer JUnit til å benytte `Theories`-runner'en til å kjøre te
 
 #### OCSP-lookup som gir annen responskode enn 200
 
-Vi skal se på et litt mer relevant eksempel.
+Vi skal se på et litt mer **relevant eksempel**.
 
-Hvor mange her har hørt om OCSP?
+_Hvor mange her har hørt om OCSP?_
 
-Online Certificate Status Protocol er en tjeneste man kan forespørre om i utgangspunktet gyldige sertifikater har blitt revokert, altså av ulike årsaker blitt ansett som ugyldige. F.eks. hvis sertifikatet har kommet på avveie, eller andre årsaker. OCSP er en vanlig del av valideringsprosessen av sertifikater. En OCSP-tjeneste er et vanlig HTTP-endepunkt man sender en request til og får en respons tilbake som angir om sertifikatet er revokert eller ikke.
+Online Certificate Status Protocol er protokollen for en tjeneste man kan spørre om **i utgangspunktet gyldige sertifikater har blitt revokert**, altså av ulike årsaker blitt **ansett som ugyldige**. F.eks. hvis sertifikatet har kommet på avveie, eller andre årsaker. OCSP er en **vanlig del av valideringsprosessen** av sertifikater. En OCSP-tjeneste er et vanlig **HTTP-endepunkt** man sender en **request** til og får en **respons** tilbake som **angir om sertifikatet er revokert eller ikke**.
 
 -------------
 
