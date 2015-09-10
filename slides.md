@@ -90,13 +90,21 @@ class: inverse
 
 
 ---
+class: center, middle
+
 
 # Tradisjonell enhetstesting
 
 
-- statiske eksempler
+.bigger[.red[&ndash;] statiske eksempler .red[&ndash;]]
 
-- corner-cases
+.bigger[.red[&ndash;] corner-cases .red[&ndash;]]
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
 
 ???
 
