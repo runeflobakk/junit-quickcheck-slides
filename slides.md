@@ -321,7 +321,7 @@ Litt mer relevant eksempel.
 
 ```java
 @Theory
-public void ocspLookupIsUndecidedForAnythingButStatusCode200(
+public void ocspLookupIsUndecided(
         @ForAll @InRange(min="100", max="599") int otherThan200) {
 
   assumeThat(otherThan200, not(200));
